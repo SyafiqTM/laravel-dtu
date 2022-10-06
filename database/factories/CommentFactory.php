@@ -21,9 +21,7 @@ class CommentFactory extends Factory
 
         return [
             'user_id' => $user->id,
-            'name' => $user->name,
             'text' => $faker->text(99),
-            'slug' => $user->name . '-' . $user->id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

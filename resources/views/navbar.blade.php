@@ -9,10 +9,10 @@
 
         </ul>
         <form class="d-flex">
-            <button class="d-flex p-2 me-2">
+            <a class="d-flex p-2 me-2" href="{{ route('login') }}">
                 <i class="fa-solid fa-user mt-1"></i> Login
 
-            </button>
+            </a>
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
