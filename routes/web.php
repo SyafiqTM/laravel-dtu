@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Comment;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PizzaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,6 +32,20 @@ Route::get('/users/{id}/comments', function ($id) {
     return $comment;
 });
 
+Route::get('/wc', function(){
+    $name = request('name');
+    $age = request('age') ? request('age') : null;
+    return view('test',['name'=>$name, 'age'=>$age]);
+});
+
+Route::get('test/{test}', function($test){
+    echo gettype($test); exit;
+    if($test == 'summary'){
+        return view('test',['test' => $test]);
+    }else{
+        abort(404);
+    }
+});
 
 Route::get('/welcome', function(){
 
@@ -58,3 +73,12 @@ Route::get('/blog/create', [BlogController::class, 'create'])->middleware(['auth
 Route::post('/blog/submit', [BlogController::class, 'store'])->middleware(['auth'])->name('blog.submit');
 
 require __DIR__.'/auth.php';
+
+
+
+//laravel 8 ke ats
+Route::get('pizza', [PizzaController::class,'show']);
+Route::get('pizza/store/{pizza}', [PizzaController::class,'store']);
+
+//laravel 6
+// Route::get('pizza', 'PizzaController@index');
